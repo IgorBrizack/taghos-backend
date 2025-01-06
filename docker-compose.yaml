@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_PROD_HOST=db
+      - DB_PROD_PORT=5432
+      - DB_PROD_NAME=mydatabase
+      - DB_PROD_USER=postgres
+      - DB_PROD_PASS=postgrespass
+    ports:
+      - "8150:8150"
+      - "2345:2345"
+    volumes:
+      - .:/app
+    tty: true
+    networks:
+      - taghos_network
+    depends_on:
+      - db
+
+  db:
+    container_name: taghos_database
+    image: postgres:15
+    restart: always
+    ports:
+      - "5432:5432" # Porta padrão do PostgreSQL
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespass
+      TZ: America/Sao_Paulo
+    volumes:
+      - ./db_data/core:/var/lib/postgresql/data # Persistência dos dados do PostgreSQL
+    networks:
+      - taghos_network
+
+volumes:
+  db_data:
+
+networks:
+  taghos_network:
