@@ -15,7 +15,6 @@ COPY --from=deps /go/bin /go/bin
 
 COPY go.mod go.sum ./
 COPY air.toml ./
-COPY .env ./
 
 # Instalar dependências Go
 RUN go mod download && go mod verify
