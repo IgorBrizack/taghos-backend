@@ -18,7 +18,7 @@
       "remotePath": "/app",
       "host": "localhost",
       "port": 2345,
-      "cwd": "/app/cmd/api-server",
+      "cwd": "${workspaceFolder}",
       "apiVersion": 2,
       "trace": "verbose"
     }
