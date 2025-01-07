@@ -8,10 +8,10 @@ import (
 )
 
 type CreateBookParams struct {
-	Title    string
-	Category string
-	Author   string
-	Synopsis string
+	Title    string `json:"title" binding:"required"`
+	Category string `json:"category" binding:"required"`
+	Author   string `json:"author" binding:"required"`
+	Synopsis string `json:"synopsis" binding:"required"`
 }
 
 type CreateBookCommand struct {

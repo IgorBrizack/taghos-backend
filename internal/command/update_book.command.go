@@ -9,10 +9,10 @@ import (
 
 type UpdateBookParams struct {
 	ID       int64  `json:"id"`
-	Title    string `json:"title"`
-	Category string `json:"category"`
-	Author   string `json:"author"`
-	Synopsis string `json:"synopsis"`
+	Title    string `json:"title" binding:"required"`
+	Category string `json:"category" binding:"required"`
+	Author   string `json:"author" binding:"required"`
+	Synopsis string `json:"synopsis" binding:"required"`
 }
 
 type UpdateBookCommand struct {
