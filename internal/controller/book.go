@@ -9,7 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// BookController estrutura
 type BookController struct {
 	bookRepository repository.BookRepository
 }

@@ -1,5 +1,3 @@
-// repository/book_repository.go
-
 package repository
 
 import (

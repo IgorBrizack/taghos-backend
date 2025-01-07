@@ -19,7 +19,6 @@ var (
 	once     sync.Once
 )
 
-// NewDatabase initializes and returns a singleton instance of Database
 func NewDatabase() (*Database, error) {
 	var err error
 	once.Do(func() {
@@ -61,7 +60,6 @@ func NewDatabase() (*Database, error) {
 	return instance, err
 }
 
-// GetInstance returns the existing singleton database instance
 func GetInstance() (*Database, error) {
 	if instance == nil {
 		return NewDatabase()
@@ -69,12 +67,10 @@ func GetInstance() (*Database, error) {
 	return instance, nil
 }
 
-// GetConnection returns the GORM connection
 func (db *Database) GetConnection() *gorm.DB {
 	return db.conn
 }
 
-// ValidateConnection checks if the connection is still valid, reconnecting if necessary
 func (db *Database) ValidateConnection() error {
 	sqlDB, err := db.conn.DB()
 	if err != nil {
@@ -92,7 +88,6 @@ func (db *Database) ValidateConnection() error {
 	return nil
 }
 
-// Close closes the database connection
 func (db *Database) Close() error {
 	sqlDB, err := db.conn.DB()
 	if err != nil {
